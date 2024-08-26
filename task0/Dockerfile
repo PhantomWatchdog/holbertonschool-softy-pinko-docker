@@ -1,11 +1,11 @@
-# Use an official Python runtime as a parent image
-FROM python
+# Use the latest version of Ubuntu as a parent image
+FROM ubuntu:latest
 
-# Set the working directory in the container
-WORKDIR /app
+# Update the package lists for upgrades for packages that need upgrading
+RUN apt-get update
 
-# Create a simple Python script
-RUN echo 'print("Hello World")' > hello.py
+# Upgrade all the installed packages
+RUN apt-get upgrade -y
 
-# Run the Python script
-CMD ["python", "hello.py"]
+# When the Docker container is run, echo "Hello, World!"
+CMD echo "Hello, World!"
